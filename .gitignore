@@ -46,4 +46,4 @@ app.*.map.json
 
 # For secure Mqtt
 .env
-/android/app/google-services.json
+android/app/google-services.json
