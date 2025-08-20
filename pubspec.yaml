@@ -107,6 +107,7 @@ flutter:
     - assets/Rectangle_1.jpg
     - assets/Rectangle_2.jpg
     - assets/Rectangle_3.jpg
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
