@@ -7,6 +7,7 @@ import 'package:mqtt_client/mqtt_server_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 import 'notification.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 @pragma('vm:entry-point') // 🔧 Required for background isolate
 Future<void> routineBackgroundCheck() async {
@@ -78,10 +79,11 @@ Future<void> routineBackgroundCheck() async {
         "Your routine ${data['title']} ready to start");
 
         print("⏳ Time within routine window for: ${data['title']}");
-        final server = 'broker.sensorsatwork.com';
-        final port = 1883;
-        final username = 'appuser';
-        final password = 'Pulsar-123#';
+
+        final server = dotenv.env['MQTT_SERVER'] ?? '';
+        final port = int.tryParse(dotenv.env['MQTT_PORT'] ?? '1883') ?? 1883;
+        final username = dotenv.env['MQTT_USERNAME'] ?? '';
+        final password = dotenv.env['MQTT_PASSWORD'] ?? '';
         final client = MqttServerClient(server, '');
         client.logging(on: false);
         client.port = port;

@@ -11,6 +11,7 @@ import 'notification.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'noti.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 late AndroidNotificationChannel channel;
 late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
@@ -42,6 +43,7 @@ void main() async {
     exact: true,
     rescheduleOnReboot: true,
   );
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 

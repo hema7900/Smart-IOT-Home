@@ -17,7 +17,7 @@ import 'routine_page.dart';
 import 'setting_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'meter_data_points.dart';
 // 📍 LOCATION HELPER
 class Location {
@@ -197,10 +197,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   // "Invoice Downloaded");
 
   Future<void> _initmqtt() async {
-    final server = 'broker.sensorsatwork.com';
-    final port = 1883;
-    final username = 'appuser';
-    final password = 'Pulsar-123#';
+    final server = dotenv.env['MQTT_SERVER'] ?? '';
+    final port = int.tryParse(dotenv.env['MQTT_PORT'] ?? '1883') ?? 1883;
+    final username = dotenv.env['MQTT_USERNAME'] ?? '';
+    final password = dotenv.env['MQTT_PASSWORD'] ?? '';
 
     mqttClient = MqttServerClient(server, '');
     mqttClient.logging(on: false);

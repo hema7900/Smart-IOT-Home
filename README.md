@@ -34,7 +34,7 @@ Install dependencies:
 flutter pub get
 
 Configure MQTT:
-Update the MQTT broker details in lib/config.dart or wherever the broker is initialized.
+Update the MQTT broker details in lib/welcome.dart and lib/noti.dart or wherever the broker is initialized.
 
 Run the app:
 
